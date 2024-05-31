@@ -1,0 +1,31 @@
+
+
+<div>
+  <h1>Employees</h1>
+  <button (click)="addEmployee()">Add Employee</button>
+  <table>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone Number</th>
+        <th>Department</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.firstName }}</td>
+        <td>{{ employee.lastName }}</td>
+        <td>{{ employee.phoneNumber }}</td>
+        <td>{{ employee.department }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="editEmployee(employee)">Edit</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </table>
+</div>
+
