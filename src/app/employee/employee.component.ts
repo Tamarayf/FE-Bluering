@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-employee',
@@ -7,6 +7,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent {
+
+
+  private heroesUrl = 'api/heroes';  // URL to web api
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
   employees: any[] = [];
 
   constructor(private http: HttpClient) {}
