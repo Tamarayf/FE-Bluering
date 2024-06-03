@@ -6,5 +6,9 @@ import { Component,Input } from '@angular/core';
   styleUrl: './side-bar.component.css'
 })
 export class SideBarComponent {
-  // sidebarItems: string[] = ['Employees', 'Leaves', 'Expenses'];
+  @Input() sidebarItems: { name: string, link: string }[] = [
+    { name: 'Employees', link: '/main/employees' },
+    { name: 'Leaves', link: '/main/leaves' },
+    { name: 'Expenses', link: '/main/expenses' }
+  ];
 }

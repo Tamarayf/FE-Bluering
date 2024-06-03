@@ -7,11 +7,19 @@
 <!--  </div>-->
 <!--</div>-->
 
+<!--<div class="border-end bg-white" id="sidebar-wrapper">-->
+<!--  <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>-->
+<!--  <div class="list-group list-group-flush">-->
+<!--    <a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="/main/employees">Employees</a>-->
+<!--    <a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="/main/leaves">Leaves</a>-->
+<!--    <a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="/main/expenses">Expenses</a>-->
+<!--  </div>-->
+<!--</div>-->
 <div class="border-end bg-white" id="sidebar-wrapper">
   <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
   <div class="list-group list-group-flush">
-    <a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="/main/employees">Employees</a>
-    <a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="/main/leaves">Leaves</a>
-    <a class="list-group-item list-group-item-action list-group-item-light p-3" routerLink="/main/expenses">Expenses</a>
+    <a *ngFor="let item of sidebarItems" class="list-group-item list-group-item-action list-group-item-light p-3" [routerLink]="item.link">
+      {{ item.name }}
+    </a>
   </div>
 </div>

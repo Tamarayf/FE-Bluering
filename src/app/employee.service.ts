@@ -1,17 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Employee } from './employee'; // Import the Employee interface
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
-  private employeesUrl = 'http://your-backend-url/api/employees'; // Replace with your backend API URL
 
-  constructor(private http: HttpClient) {}
+  private apiUrl = 'http://localhost:8080/api';
 
-  getEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.employeesUrl);
+  constructor(private http: HttpClient) { }
+
+  // getEmployees(): Observable<ApiResponse> {
+  //   return this.http.get<ApiResponse>(`${this.apiUrl}/employees`)
+  //     .pipe(
+  //       catchError(this.handleError)
+  //     );
+
+  getEmployees(): Observable<any> {
+    return this.http.get<any>('/employees');
   }
+
 }
+
+
+
+
