@@ -1,54 +1,104 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import {Department} from "../Department";
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {HttpClient} from "@angular/common/http";
+import {Employee} from "../Employee";
 
 @Component({
   selector: 'app-add-employee-modal',
   templateUrl: './add-employee-modal.component.html',
   styleUrls: ['./add-employee-modal.component.css']
 })
-export class AddEmployeeModalComponent {
-  @Output() employeeAdded = new EventEmitter<void>();
+export class AddEmployeeModalComponent implements OnInit {
+  employeeForm!: FormGroup;
+  departments: Department[] = [];
+  private departmentSelected: boolean =false;
+  private employees: Employee[]=[];
 
-  employee = {
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    department: null
-  };
 
-  departments = [
-    { id: 1, name: 'IT' },
-    { id: 2, name: 'HR' },
-    { id: 3, name: 'Finance' }
-  ];
+  constructor(private formBuilder: FormBuilder, public activeModal: NgbActiveModal, private http: HttpClient) { }
 
-  constructor(private http: HttpClient) {}
+  ngOnInit() {
+    this.employeeForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+      department: ['', Validators.required],
+      age: ['', Validators.required],
+      gender: ['', Validators.required]
+    });
 
-  onSubmit() {
-    const url = 'http://localhost:8080/api/employees';
-    this.http.post<any>(url, this.employee, { headers: new HttpHeaders({'Content-Type': 'application/json'}) }).subscribe(
+    this.loadDepartments();
+  }
+
+
+
+// Function to check if a department is selected
+
+  // loadDepartments() {
+  //   this.http.get<any>('http://localhost:8080/api/departments').subscribe(
+  //     res => {
+  //       console.log('Response from API:', res); // Log the response
+  //       if (res.success && Array.isArray(res.returnField)) {
+  //         this.departments = res.returnField;
+  //       } else {
+  //         console.error('Invalid response format:', res);
+  //       }
+  //       console.log('Departments:', this.departments); // Log the departments array
+  //     },
+  //     error => {
+  //       console.error('Error loading departments:', error);
+  //     }
+  //   );
+  // }
+
+  addEmployeeToTable(employee: Employee) {
+    this.employees.push(employee);
+  }
+
+
+  loadDepartments() {
+    this.http.get<any>('http://localhost:8080/api/departments').subscribe(
       res => {
-        console.log('Employee added successfully');
-        this.employeeAdded.emit();
-        this.resetForm();
-        const modalElement = document.getElementById('addEmployeeModal');
-        if (modalElement) {
-          const modal = bootstrap.Modal.getInstance(modalElement);
-          modal.hide();
+        if (Array.isArray(res.returnField)) {
+          this.departments = res.returnField;
+        } else {
+          console.error('Departments array not found in response:', res);
         }
       },
       error => {
-        console.error('Error adding employee:', error);
+        console.error('Error loading departments:', error);
       }
     );
   }
 
-  resetForm() {
-    this.employee = {
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
-      department: null
-    };
+
+
+  saveEmployee() {
+    
+
   }
+
+
+
+  closeModal() {
+    this.activeModal.dismiss('Modal closed');
+  }
+
+  checkDepartmentSelected() {
+    this.departmentSelected = this.employeeForm.get('department')?.value !== '';
+  }
+
+  clearDepartmentSelection() {
+    const departmentControl = this.employeeForm.get('department');
+    if (departmentControl) {
+      departmentControl.setValue('');
+      this.departmentSelected = false;
+    }
+  }
+
+
+
 }

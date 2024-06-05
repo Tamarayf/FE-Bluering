@@ -94,6 +94,10 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {from} from "rxjs";
 import {Employee} from "./Employee";
+import { AddEmployeeModalComponent } from '../add-employee-modal/add-employee-modal.component';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {Department} from "../Department";
+
 
 
 
@@ -109,11 +113,14 @@ export class EmployeeComponent implements OnInit {
   };
 
   employees: Employee[] = [];
+  departments: Department[]=[]
 
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient, private modalService: NgbModal) {} // Inject NgbModal service here
 
   ngOnInit() {
     this.getAllEmployees();
+    // this.getDepartments();
   }
 
   public getAllEmployees() {
@@ -131,6 +138,31 @@ export class EmployeeComponent implements OnInit {
       }
     );
   }
+  openAddEmployeeModal() {
+    const modalRef = this.modalService.open(AddEmployeeModalComponent);
+    modalRef.result.then((result) => {
+      // Handle modal result if needed
+    }).catch((error) => {
+      // Handle modal dismiss if needed
+    });
+  }
+  //
+  // public getDepartments() {
+  //   let url = 'http://localhost:8080/api/departments'; // Change URL as per your API
+  //   this.http.get<any>(url).subscribe(
+  //     res => {
+  //       if (res.success) {
+  //         this.departments = res.returnField.map(department => department.depName);
+  //       } else {
+  //         console.error('Error fetching departments:', res.message);
+  //       }
+  //     },
+  //     error => {
+  //       console.error('Error fetching departments:', error);
+  //     }
+  //   );
+  // }
+
 
 
   // Uncomment and implement these methods if needed

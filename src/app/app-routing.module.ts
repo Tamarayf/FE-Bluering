@@ -4,6 +4,7 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { EmployeeComponent } from './employee/employee.component'; // Adjust the path as per your project structure
 
 import {ContentComponent} from "./content/content.component";
+import {AddEmployeeModalComponent} from "./add-employee-modal/add-employee-modal.component";
 
 //
 // const routes: Routes = [
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'main', component: MainLayoutComponent, children: [
       { path: 'employees', component: EmployeeComponent },
       { path: 'api/employees', component: EmployeeComponent },
+
+      // { path: 'edit-employee/:id', component: EditEmployeeComponent }
       // { path: 'leaves', component: ContentComponent },
       // { path: 'expenses', component: ContentComponent }
     ]}

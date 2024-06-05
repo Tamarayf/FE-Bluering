@@ -1,34 +1,72 @@
-<div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addEmployeeModalLabel">Add Employee</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form #employeeForm="ngForm" (ngSubmit)="onSubmit()">
-          <div class="mb-3">
-            <label for="firstName" class="form-label">First Name</label>
-            <input type="text" id="firstName" class="form-control" required [(ngModel)]="employee.firstName" name="firstName">
-          </div>
-          <div class="mb-3">
-            <label for="lastName" class="form-label">Last Name</label>
-            <input type="text" id="lastName" class="form-control" required [(ngModel)]="employee.lastName" name="lastName">
-          </div>
-          <div class="mb-3">
-            <label for="phoneNumber" class="form-label">Phone Number</label>
-            <input type="text" id="phoneNumber" class="form-control" required [(ngModel)]="employee.phoneNumber" name="phoneNumber">
-          </div>
-          <div class="mb-3">
-            <label for="department" class="form-label">Department</label>
-            <ng-select [items]="departments" bindLabel="name" [(ngModel)]="employee.department" name="department" required></ng-select>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">Save</button>
-          </div>
-        </form>
+
+
+<div class="modal-header">
+  <h4 class="modal-title">---Add Employee: ---</h4>
+  <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="employeeForm" (ngSubmit)="saveEmployee()">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="First Name..">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Last Name..">
+    </div>
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber" placeholder="+961xxxxxxxx">
+    </div>
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input type="number" class="form-control" id="age" formControlName="age" placeholder="--">
+    </div>
+    <div class="form-group">
+      <label> Department :</label>
+      <label for="department" class="department-label">Department:</label>
+      <div class="custom-dropdown">
+        <select formControlName="department" id="department" class="form-control">
+
+          <option *ngFor="let dept of departments" [value]="dept.depId">{{ dept.depName }}</option>
+        </select>
+        <div class="x" (click)=" clearDepartmentSelection()">&#10006;</div>
+        <div class="arrow">&#9660;</div>
+
       </div>
     </div>
-  </div>
+
+
+    <!--    <div class="form-group">-->
+<!--      <label>Department:</label>-->
+<!--      <select formControlName="department" class="form-control">-->
+<!--        <ng-container *ngIf="!departments || departments.length === 0">-->
+<!--          <option value="" disabled selected>Select Department</option>-->
+<!--        </ng-container>-->
+<!--        <ng-container *ngFor="let dept of departments">-->
+<!--          <option [value]="dept.depId">{{ dept.depName }}</option>-->
+<!--        </ng-container>-->
+<!--      </select>-->
+<!--    </div>-->
+    <div class="form-group">
+      <label>Gender</label>
+      <div class="gender-options">
+        <label>
+          <input type="radio" formControlName="gender" [value]="'male'"> Male
+        </label>
+        <label>
+          <input type="radio" formControlName="gender" [value]="'female'"> Female
+        </label>
+      </div>
+    </div>
+
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+      <button type="submit" class="btn btn-primary">Save</button>
+</div>
+  </form>
+
 </div>
