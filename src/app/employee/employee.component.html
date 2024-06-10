@@ -5,46 +5,68 @@
 <!--      <div class="col">-->
 <!--        <input type="text" placeholder="Search" class="form-control search-box">-->
 <!--      </div>-->
-<!--      <div class="col-auto ml-auto">-->
-<!--        <button class="btn btn-primary" (click)="addEmployee()"> +Add Employee</button>-->
-<!--      </div>-->
+<!--            <div class="col-auto ml-auto">-->
+<!--              <button class="btn btn-primary" (click)="openAddEmployeeModal()"> +Add Employee</button>-->
+
+
+<!--            </div>-->
 <!--    </div>-->
-<!--    <table class="table table-bordered">-->
+<!--    <table id="employeesTable" class="table table-bordered">-->
 <!--      <thead>-->
 <!--      <tr>-->
 <!--        <th>First Name</th>-->
 <!--        <th>Last Name</th>-->
 <!--        <th>Phone Number</th>-->
+<!--        <th>Address</th>-->
+
+<!--        <th>Age</th>-->
+<!--        <th>Gender</th>-->
 <!--        <th>Department</th>-->
 <!--        <th>Action</th>-->
+
+
 <!--      </tr>-->
 <!--      </thead>-->
 <!--      <tbody>-->
 <!--      <tr *ngFor="let employee of employees">-->
 <!--        <td>{{ employee.firstName }}</td>-->
-<!--        <td>{{ employee.lastName }}</td>-->
-<!--        <td>{{ employee.phoneNumber }}</td>-->
-<!--        <td>{{ employee.department }}</td>-->
+<!--        <td>{{employee.lastName}}</td>-->
+<!--        <td>{{ employee.number }}</td>-->
+<!--        <td>{{ employee.address }}</td>-->
+
+<!--        <td>{{ employee.age }}</td>-->
+<!--        <td>{{employee.gender}}</td>-->
+<!--        <td>{{employee.departmentName}}</td>-->
+
 <!--        <td>-->
-<!--          <button class="btn btn-sm btn-primary" (click)="editEmployee(employee)">Edit</button>-->
+<!--            <i class="fas fa-pen-to-square" (click)="editEmployee(employee)" style="margin-right: 10px;">   </i>-->
+<!--          <i class="fa-solid fa-trash-can"(click)="editEmployee(employee)"></i>-->
 <!--        </td>-->
+
+
+
 <!--      </tr>-->
 <!--      </tbody>-->
 <!--    </table>-->
 <!--  </div>-->
 <!--</div>-->
-<div>
+
+
+
+
   <h1>Employees</h1>
   <div class="container-fluid">
     <div class="row align-items-center mb-3">
-      <div class="col">
-        <input type="text" placeholder="Search" class="form-control search-box">
+      <div class="col d-flex align-items-center">
+        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchQuery">
+        <i class="fa-solid fa-magnifying-glass" (click)="onSearch()"></i>
+
+        <i class="fa-solid fa-x" type="button" (click)="resetSearch()"></i>
       </div>
-            <div class="col-auto ml-auto">
-              <button class="btn btn-primary" (click)="openAddEmployeeModal()">Add Employee</button>
 
-
-            </div>
+      <div class="col-auto ml-auto">
+        <button class="btn btn-primary" (click)="openAddEmployeeModal()">+ Add Employee</button>
+      </div>
     </div>
     <table id="employeesTable" class="table table-bordered">
       <thead>
@@ -52,25 +74,30 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Phone Number</th>
+        <th>Address</th>
+        <th>Age</th>
+        <th>Gender</th>
         <th>Department</th>
         <th>Action</th>
-        <th>id</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let employee of employees">
-        <td>{{ employee.empName }}</td>
-        <td>{{employee.empEmail}}</td>
-        <td>{{ employee.empAddress }}</td>
-        <td>{{ employee.departmentId }}</td>
+      <tr *ngFor="let employee of searchActive ? filteredEmployees : employees1">
+        <td>{{ employee.firstName }}</td>
+        <td>{{ employee.lastName }}</td>
+        <td>{{ employee.phonenumber }}</td>
+        <td>{{ employee.address }}</td>
+        <td>{{ employee.age }}</td>
+        <td>{{ employee.gender }}</td>
         <td>{{ employee.departmentName }}</td>
-        <td>{{employee.empId}}</td>
+        <td>
+          <i class="fas fa-edit" (click)="openEditEmployeeModal(employee)" style="margin-right: 10px; cursor: pointer;"></i>
 
-                <td>
-                  <button class="btn btn-sm btn-primary" (click)="editEmployee(employee)">Edit</button>
-                </td>
+          <i class="fas fa-trash-alt" (click)="openDeleteConfirmationModal(employee)" style="cursor: pointer;"></i>
+        </td>
+
       </tr>
       </tbody>
     </table>
   </div>
-</div>
+

@@ -1,9 +1,26 @@
-.search-box {
-  width:300px; /* Adjust the width as needed */
+
+.col {
+  display: flex;
+  align-items: center;
 }
 
+
+.form-control {
+  width: 300px;
+}
+
+
+.fa-solid fa-x {
+  margin-left: 10px;
+}
+
+.fa-solid {
+  margin-left: 5px;
+}
 
 .ml-auto {
   margin-left: auto;
 }
+
+
 

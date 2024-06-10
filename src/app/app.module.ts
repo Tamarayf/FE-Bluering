@@ -85,6 +85,7 @@ import { EmployeeComponent } from './employee/employee.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddEmployeeModalComponent } from './add-employee-modal/add-employee-modal.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { DeleteConfirmationModalComponent } from './delete-confirmation-modal/delete-confirmation-modal.component';
 
 
 @NgModule({
@@ -94,7 +95,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     SideBarComponent,
     ContentComponent,
     EmployeeComponent,
-    AddEmployeeModalComponent
+    AddEmployeeModalComponent,
+    DeleteConfirmationModalComponent
   ],
   imports: [
     BrowserModule,
@@ -107,6 +109,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

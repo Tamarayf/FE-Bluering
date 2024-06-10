@@ -1,8 +1,19 @@
-export interface Employee {
-  empId:number;
-  empName:string;
-  empEmail:string;
-  empAddress:string;
-  departmentId:number;
-  departmentName:string;
+export enum Gender {
+  Male = 'male',
+  Female = 'female'
 }
+
+export interface Employee {
+  empId?: number
+  firstName: string;
+  lastName: string;
+  phonenumber: number;
+  address: string;
+  age: number;
+  departmentId: number;
+  gender: Gender;
+  departmentName: string;
+}
+
+
+
