@@ -6,6 +6,9 @@
 </div>
 <div class="modal-body">
   <form [formGroup]="employeeForm" (ngSubmit)="saveEmployee()">
+
+
+
     <div class="form-group">
       <label for="firstName">First Name:</label>
       <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="First Name">
@@ -85,5 +88,7 @@
       <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
       <button type="submit" class="btn btn-primary">Save</button>
     </div>
+
   </form>
+
 </div>

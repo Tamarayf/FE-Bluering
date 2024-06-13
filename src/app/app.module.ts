@@ -86,6 +86,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddEmployeeModalComponent } from './add-employee-modal/add-employee-modal.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DeleteConfirmationModalComponent } from './delete-confirmation-modal/delete-confirmation-modal.component';
+import { LeavesComponent } from './leaves/leaves.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import {RouterModule} from "@angular/router";
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
+
 
 
 @NgModule({
@@ -96,16 +103,23 @@ import { DeleteConfirmationModalComponent } from './delete-confirmation-modal/de
     ContentComponent,
     EmployeeComponent,
     AddEmployeeModalComponent,
-    DeleteConfirmationModalComponent
+    DeleteConfirmationModalComponent,
+    LeavesComponent,
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     HttpClientModule,
     FormsModule, // <-- Add FormsModule here
     NgbModule,
+    NgxDatatableModule,
+    NgxPaginationModule,
     NgSelectModule,
     ReactiveFormsModule,
+
 
   ],
   providers: [],

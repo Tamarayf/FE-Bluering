@@ -23,7 +23,7 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   imports: [
-    AppModule,
+    // AppModule,
     ServerModule,
 
   ],

@@ -9,6 +9,6 @@ export class SideBarComponent {
   @Input() sidebarItems: { name: string, link: string }[] = [
     { name: 'Employees', link: '/main/employees' },
     { name: 'Leaves', link: '/main/leaves' },
-    { name: 'Expenses', link: '/main/expenses' }
+    // { name: 'Expenses', link: '/main/expenses' }
   ];
 }

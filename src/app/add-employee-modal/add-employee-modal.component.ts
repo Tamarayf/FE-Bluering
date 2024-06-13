@@ -26,6 +26,7 @@ export class AddEmployeeModalComponent implements OnInit {
 
   ngOnInit() {
     this.employeeForm = this.formBuilder.group({
+      empId: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       phonenumber: ['', Validators.required],

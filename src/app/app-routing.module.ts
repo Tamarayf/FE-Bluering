@@ -5,6 +5,7 @@ import { EmployeeComponent } from './employee/employee.component'; // Adjust the
 
 import {ContentComponent} from "./content/content.component";
 import {AddEmployeeModalComponent} from "./add-employee-modal/add-employee-modal.component";
+import {LeavesComponent} from "./leaves/leaves.component";
 
 //
 // const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'main', component: MainLayoutComponent, children: [
       { path: 'employees', component: EmployeeComponent },
       { path: 'api/employees', component: EmployeeComponent },
+      { path: 'leaves', component: LeavesComponent  },
 
       // { path: 'edit-employee/:id', component: EditEmployeeComponent }
       // { path: 'leaves', component: ContentComponent },
