@@ -1,0 +1,149 @@
+<!--<div class="modal-header">-->
+<!--<h4 class="modal-title">Add Leaves</h4>-->
+<!--<button type="button" class="close" aria-label="Close" (click)="closeModal()">-->
+<!--  <span aria-hidden="true">&times;</span>-->
+<!--</button>-->
+<!--</div>-->
+
+
+
+
+<!--  <div class="modal-body">-->
+<!--  <form [formGroup]="leaveForm" (ngSubmit)="saveLeave()">-->
+
+
+
+<!--    <div class="form-group">-->
+<!--      <label for="leaveType">Leave Type:</label>-->
+<!--      <div class="custom-dropdown">-->
+<!--        <select formControlName="leaveTypeId" id="leaveType">-->
+
+<!--          <option value="" disabled selected>Select Leave Type</option>-->
+<!--          <option *ngFor="let type of leaveTypes" [value]="type.idLeaveType">{{ type.nameLeaveType }}</option>-->
+<!--        </select>-->
+<!--        <i class="fa-solid fa-x" (click)="clearLeaveTypeSelection()"></i>-->
+<!--&lt;!&ndash;        <div class="arrow">&#9660;</div>&ndash;&gt;-->
+<!--      </div>-->
+<!--      <div *ngIf="leaveForm.get('leaveTypeId')?.invalid && (leaveForm.get('leaveTypeId')?.dirty || leaveForm.get('leaveTypeId')?.touched)">-->
+<!--        <small class="text-danger" *ngIf="leaveForm.get('leaveTypeId')?.errors?.['required']">Leave Type is required</small>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="employee">Employee:</label>-->
+<!--      <div class="custom-dropdown">-->
+<!--        <select formControlName="employeeId" id="employee">-->
+
+<!--          <option value="" disabled selected>Select Employee</option>-->
+<!--          <option *ngFor="let emp of employees" [value]="emp.empId">{{ emp.firstName }}</option>-->
+<!--        </select>-->
+<!--        <i class="fa-solid fa-x" (click)="clearEmployeeSelection()"></i>-->
+<!--&lt;!&ndash;        <div class="arrow">&#9660;</div>&ndash;&gt;-->
+<!--      </div>-->
+<!--      <div *ngIf="leaveForm.get('employeeId')?.invalid && (leaveForm.get('employeeId')?.dirty || leaveForm.get('employeeId')?.touched)">-->
+<!--        <small class="text-danger" *ngIf="leaveForm.get('employeeId')?.errors?.['required']">Employee is required</small>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--      <label for="fromDate">From Date:</label>-->
+<!--      <input type="date" class="form-control" id="fromDate" formControlName="fromDate">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="toDate">To Date:</label>-->
+<!--      <input type="date" class="form-control" id="toDate" formControlName="toDate">-->
+<!--    </div>-->
+
+
+
+
+<!--    <div class="form-group">-->
+<!--      <label for="note">Note:</label>-->
+<!--      <textarea class="form-control" id="note" formControlName="note"></textarea>-->
+<!--    </div>-->
+
+
+<!--    <div class="modal-footer">-->
+<!--      <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>-->
+<!--      <button type="submit" class="btn btn-primary">Save</button>-->
+<!--    </div>-->
+
+
+<!--  </form>-->
+<!--</div>-->
+<div class="modal-header">
+  <h4 class="modal-title">Add Leave</h4>
+  <button type="button" class="close" (click)="closeModal()">&times;</button>
+</div>
+<form [formGroup]="leaveForm" (ngSubmit)="saveLeave()">
+  <div class="form-group">
+    <label for="leaveType">Leave Type:</label>
+    <div class="custom-dropdown">
+      <select formControlName="leaveTypeId" id="leaveType">
+        <option value="" disabled selected>Select Leave Type</option>
+        <option *ngFor="let type of leaveTypes" [value]="type.idLeaveType">{{ type.nameLeaveType }}</option>
+      </select>
+      <i class="fa-solid fa-x" (click)="clearLeaveTypeSelection()"></i>
+      <div class="arrow">&#9660;</div>
+    </div>
+    <div *ngIf="leaveForm.get('leaveTypeId')?.invalid && (leaveForm.get('leaveTypeId')?.dirty || leaveForm.get('leaveTypeId')?.touched)">
+      <small class="text-danger" *ngIf="leaveForm.get('leaveTypeId')?.errors?.['required']">Leave Type is required</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="employee">Employee:</label>
+    <div class="custom-dropdown">
+      <select formControlName="employeeId" id="employee">
+        <option value="" disabled selected>Select Employee</option>
+        <option *ngFor="let emp of employees" [value]="emp.empId">{{  emp.firstName + ' ' + emp.lastName }}</option>
+      </select>
+      <i class="fa-solid fa-x" (click)="clearEmployeeSelection()"></i>
+      <div class="arrow">&#9660;</div>
+    </div>
+    <div *ngIf="leaveForm.get('employeeId')?.invalid && (leaveForm.get('employeeId')?.dirty || leaveForm.get('employeeId')?.touched)">
+      <small class="text-danger" *ngIf="leaveForm.get('employeeId')?.errors?.['required']">Employee is required</small>
+    </div>
+
+
+
+<!--    <div class="form-group">-->
+<!--      <label for="leaveDays">Leave Days:</label>-->
+<!--      <input type="number" id="leaveDays" formControlName="leaveDays" class="form-control">-->
+<!--      <div *ngIf="leaveForm.get('leaveDays')?.invalid && (leaveForm.get('leaveDays')?.dirty || leaveForm.get('leaveDays')?.touched)">-->
+<!--        <small class="text-danger" *ngIf="leaveForm.get('leaveDays')?.errors?.['required']">Leave Days are required</small>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <div class="form-group">
+      <label for="fromDate">From Date:</label>
+      <input type="date" id="fromDate" formControlName="fromDate" class="form-control">
+      <div *ngIf="leaveForm.get('fromDate')?.invalid && (leaveForm.get('fromDate')?.dirty || leaveForm.get('fromDate')?.touched)">
+        <small class="text-danger" *ngIf="leaveForm.get('fromDate')?.errors?.['required']">From Date is required</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="toDate">To Date:</label>
+      <input type="date" id="toDate" formControlName="toDate" class="form-control">
+      <div *ngIf="leaveForm.get('toDate')?.invalid && (leaveForm.get('toDate')?.dirty || leaveForm.get('toDate')?.touched)">
+        <small class="text-danger" *ngIf="leaveForm.get('toDate')?.errors?.['required']">To Date is required</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="note">Note:</label>
+      <textarea id="note" formControlName="note" class="form-control"></textarea>
+      <div *ngIf="leaveForm.get('note')?.invalid && (leaveForm.get('note')?.dirty || leaveForm.get('note')?.touched)">
+        <small class="text-danger" *ngIf="leaveForm.get('note')?.errors?.['required']">Note is required</small>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+
+
+
+  </div>
+</form>

@@ -207,6 +207,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {AddEmployeeModalComponent} from "../add-employee-modal/add-employee-modal.component";
+import {AddLeaveComponent} from "../add-leave/add-leave.component";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-leaves',
@@ -216,7 +219,7 @@ import { HttpClient } from '@angular/common/http';
 export class LeavesComponent implements OnInit {
   leaves: any[] = [];
   columns: any[] = [
-    { prop: 'leaveTypeId', name: 'Leave Type' },
+    { prop: 'leaveTypeId', name: 'Leave Type ' },
     { prop: 'fromDate', name: 'From Date' },
     { prop: 'toDate', name: 'To Date' },
     { prop: 'numberOfDays', name: 'Number of Days' },
@@ -233,12 +236,21 @@ export class LeavesComponent implements OnInit {
   leaveTypeId: number | null = null;
   employeeId: number | null = null;
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient, private modalService: NgbModal) {}
 
   ngOnInit(): void {
     this.getLeaves();
   }
 
+  openAddLeaveModal() {
+    const modalRef = this.modalService.open(AddLeaveComponent);
+    modalRef.result.then((result) => {
+      // Handle modal result if needed
+    }).catch((error) => {
+      // Handle modal dismiss if needed
+    });
+  }
   onPageChange(event: any): void {
     this.currentPage = event.offset + 1;
     this.getLeaves();
@@ -256,6 +268,7 @@ export class LeavesComponent implements OnInit {
           const response = res.returnField;
           this.leaves = response.items;
           this.totalItems = response.totalItems;
+
         } else {
           console.error('Error fetching leaves:', res.message);
         }
@@ -264,6 +277,7 @@ export class LeavesComponent implements OnInit {
         console.error('Error fetching leaves:', error);
       }
     );
+
   }
 
   onFilterChange(): void {

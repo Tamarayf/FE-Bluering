@@ -3,7 +3,9 @@ export interface Leave {
   leaveTypeId: number;
   fromDate: string;
   toDate: string;
-  numberOfDays: number;
+  numberOfDays?: number;
   note: string;
   employeeId: number;
 }
+
+

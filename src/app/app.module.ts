@@ -90,6 +90,7 @@ import { LeavesComponent } from './leaves/leaves.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import {RouterModule} from "@angular/router";
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AddLeaveComponent } from './add-leave/add-leave.component';
 
 
 
@@ -105,6 +106,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AddEmployeeModalComponent,
     DeleteConfirmationModalComponent,
     LeavesComponent,
+    AddLeaveComponent,
 
 
   ],
