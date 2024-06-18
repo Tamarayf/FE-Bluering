@@ -1,0 +1,35 @@
+<!-- expense-entries.component.html -->
+<div *ngIf="entries && entries.length > 0; else noEntries">
+  <table class="table">
+
+    <thead>
+    <tr>
+      <th>Expense Claim Entry ID</th>
+      <th>Date Entry</th>
+      <th>Expense Type ID</th>
+      <th>Expense Claim ID</th>
+      <th>Description</th>
+      <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let entry of entries">
+      <td>{{ entry.expenseClaimEntryId }}</td>
+      <td>{{ entry.dateEntry }}</td>
+      <td>{{ entry.expenseTypeId }}</td>
+      <td>{{ entry.expenseClaimId }}</td>
+      <td>{{ entry.description }}</td>
+      <td>{{ entry.total }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noEntries>
+  <div class="no-entries">
+  <p>No entries found.</p>
+
+  </div>
+
+</ng-template>
+
+

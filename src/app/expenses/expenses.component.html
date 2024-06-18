@@ -1,0 +1,78 @@
+<!--&lt;!&ndash; components/expenses/expenses.component.html &ndash;&gt;-->
+<!--<div class="expenses-container">-->
+<!--  <table class="table">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>ID</th>-->
+<!--      <th>Date</th>-->
+<!--      <th>Description</th>-->
+<!--      <th>Total</th>-->
+<!--      <th>Status</th>-->
+<!--      <th>Employee ID</th>-->
+<!--      <th>Entries</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr *ngFor="let expense of expenses">-->
+<!--      <td>{{ expense.expenseClaimId }}</td>-->
+<!--      <td>{{ expense.dates }}</td>-->
+<!--      <td>{{ expense.description }}</td>-->
+<!--      <td>{{ expense.total }}</td>-->
+<!--      <td>{{ expense.statuss }}</td>-->
+<!--      <td>{{ expense.employeeId }}</td>-->
+<!--      <td>-->
+<!--        <ul>-->
+<!--          <li *ngFor="let entry of expense.entries">-->
+<!--            {{ entry.entryDate }} - {{ entry.entryType }} - {{ entry.totalAmount }}-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </td>-->
+<!--&lt;!&ndash;      <td>&ndash;&gt;-->
+<!--&lt;!&ndash;        <button (click)="viewExpenseEntries(expense.expenseClaimId)">View Entries</button>&ndash;&gt;-->
+<!--&lt;!&ndash;      </td>&ndash;&gt;-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
+
+<!--  <div class="pagination-controls">-->
+<!--    <button (click)="previousPage()" [disabled]="page <= 1">Previous</button>-->
+<!--    <button (click)="nextPage()" [disabled]="page >= totalExpenses / pageSize">Next</button>-->
+<!--  </div>-->
+<!--</div>-->
+<!-- src/app/components/expenses/expenses.component.html -->
+<!-- src/app/components/expenses/expenses.component.html -->
+<div class="expenses-container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Total</th>
+      <th>Status</th>
+      <th>Employee ID</th>
+      <th>Entries</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let expense of displayedExpenses">
+      <td>{{ expense.expenseClaimId }}</td>
+      <td>{{ expense.dates }}</td>
+      <td>{{ expense.description }}</td>
+      <td>{{ expense.total }}</td>
+      <td>{{ expense.statuss }}</td>
+      <td>{{ expense.employeeId }}</td>
+      <td>
+        <a [routerLink]="['/expense-entries', expense.expenseClaimId]">View Entries</a>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination-controls">
+    <i class="fa-solid fa-arrow-left"   (click)="previousPage()" style="margin-left: 20px"></i>
+    <i class="fa-solid fa-arrow-right" (click)="nextPage()" style="margin-left: 20px"> </i>
+
+  </div>
+</div>

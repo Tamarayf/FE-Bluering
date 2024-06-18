@@ -91,6 +91,10 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import {RouterModule} from "@angular/router";
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AddLeaveComponent } from './add-leave/add-leave.component';
+import { ExpensesComponent } from './expenses/expenses.component';
+import {CommonModule} from "@angular/common";
+import { ExpenseEntriesComponent } from './expense-entries/expense-entries.component';
+// import {ExpenseEntriesComponent} from "./expenses/expense-entries.component";
 
 
 
@@ -107,6 +111,9 @@ import { AddLeaveComponent } from './add-leave/add-leave.component';
     DeleteConfirmationModalComponent,
     LeavesComponent,
     AddLeaveComponent,
+    ExpensesComponent,
+    ExpenseEntriesComponent,
+    // ExpenseEntriesComponent
 
 
   ],
@@ -121,6 +128,9 @@ import { AddLeaveComponent } from './add-leave/add-leave.component';
     NgxPaginationModule,
     NgSelectModule,
     ReactiveFormsModule,
+    CommonModule,
+    CommonModule,
+    CommonModule,
 
 
   ],
