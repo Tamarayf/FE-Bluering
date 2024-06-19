@@ -99,7 +99,9 @@ export class ExpenseEntriesComponent implements OnInit {
       this.loadExpenseEntries();
     }
   }
-
+  goBack() {
+    this.router.navigate(['/main/expenses']); // Navigate to the expense page
+  }
   loadExpenseEntries() {
     const url = `http://localhost:8080/api/expense-entries/${this.expenseClaimId}`;
     console.log(`Fetching data from: ${url}`);  // Debugging statement
@@ -118,9 +120,6 @@ export class ExpenseEntriesComponent implements OnInit {
         console.error('Error fetching entries:', error);
       }
     );
-  }
-  goBack() {
-    this.router.navigate(['/expenses']); // Navigate to the expense page
   }
 
 

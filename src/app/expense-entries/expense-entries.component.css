@@ -66,3 +66,20 @@
 table{
   margin-left :25px;
 }
+
+.back {
+  background-color: white;
+  margin-left: 10px;
+  border: none;
+  border-radius: 5px; /* Add this for rounded corners */
+  padding: 10px 20px; /* Adjust padding as needed */
+  cursor: pointer;
+}
+
+.back:hover {
+  background-color: #f0f0f0; /* Optional: Add a hover effect */
+}
+
+.back:active {
+  background-color: #e0e0e0; /* Optional: Add an active effect */
+}
